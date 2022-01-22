@@ -1,0 +1,1 @@
+protoc --ts_proto_opt=esModuleInterop=true --ts_proto_opt=snakeToCamel=false --proto_path=.\proto --plugin=protoc-gen-ts_proto=.\node_modules\.bin\protoc-gen-ts_proto.cmd --ts_proto_out=.\protogen .\proto\*

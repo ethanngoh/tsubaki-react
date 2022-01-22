@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Toast } from "./components/Toast";
+import React from "react";
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import { InjectedAddAccountView } from "views/AddAccountView";
 
-function App() {
+const AppContainer = styled.div`
+  display: flex;
+  justifycontent: center;
+`;
+
+const AppContainerInner = styled.div`
+  maxwidth: 1200px;
+  width: 100%;
+  padding: 1rem;
+`;
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <AppContainerInner>
+        <Router>
+          <Toast />
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/add-account">Add Account</Link>
+                </li>
+              </ul>
+            </nav>
+            <Routes>
+              <Route path="/add-account/:id" element={<InjectedAddAccountView />}></Route>
+            </Routes>
+          </div>
+        </Router>
+      </AppContainerInner>
+    </AppContainer>
   );
 }
-
-export default App;
