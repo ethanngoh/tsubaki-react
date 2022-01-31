@@ -6,6 +6,8 @@ import { AccountService } from "./accounts/AccountService";
 import { AccountStore } from "./accounts/AccountStore";
 import { AuthLocalStorage } from "./auth/Auth";
 import { BASE_URL } from "./environment";
+import { MonsterService } from "./monsters/MonsterService";
+import { MonsterStore } from "./monsters/MonsterStore";
 import {
   AUTH_SOURCES,
   CLIENT_AUTHORIZATION_HEADER_NAME,
@@ -19,21 +21,25 @@ interface IAllStores extends IServiceStores {}
 
 interface IServiceStores {
   accountStore: AccountStore;
+  monsterStore: MonsterStore;
 }
 
 export class Stores {
   private authLocal: AuthLocalStorage;
   private accountStore: AccountStore;
+  private monsterStore: MonsterStore;
 
   public constructor() {
     this.authLocal = new AuthLocalStorage();
     const axiosClient = this.createAxiosClient(this.authLocal);
     this.accountStore = new AccountStore(new AccountService(axiosClient));
+    this.monsterStore = new MonsterStore(new MonsterService(axiosClient));
   }
 
   public get stores(): IAllStores {
     return {
       accountStore: this.accountStore,
+      monsterStore: this.monsterStore,
     };
   }
 
