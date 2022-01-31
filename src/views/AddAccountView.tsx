@@ -64,7 +64,7 @@ export default class AddAccountView extends Component<AddAccountViewProps, State
   render() {
     return (
       <>
-        <h1>Add Account</h1>
+        <h1>Kittens</h1>
         <form onSubmit={this.handleSubmit}>
           <FormGroup label="Entity ID">
             <InputGroup placeholder="Entity ID" onChange={(e) => this.setFormData({ entity_id: e.target.value })} />
