@@ -29,18 +29,26 @@ export default class MonsterView extends Component<MonsterViewProps, State> {
   }
 
   render() {
-    var data = this.props.monsterStore.getResponse!;
+    const data = this.props.monsterStore.getResponse!;
     // comment
     if (!data) {
       return <div>Loading...</div>;
     }
+    const monster = this.props.monsterStore.getResponse.monster;
+    if (!monster) {
+      return <div>Loading...</div>;
+    }
+    const name_en = monster.cost;
+    console.log(monster);
     return (
       <>
         <h1>Kittens</h1>
 
         <div>
           DEBUG:
-          <div>{JSON.stringify(this.props.monsterStore.getResponse.monster)}</div>
+          <div>{JSON.stringify(monster)}</div>
+          kittens
+          <div>{name_en}</div>
         </div>
       </>
     );

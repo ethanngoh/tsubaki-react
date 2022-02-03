@@ -5,127 +5,127 @@ import _m0 from "protobufjs/minimal";
 export const protobufPackage = "pad_api.monster";
 
 export interface Monster {
-  monster_no_jp: number;
-  monster_no_na: number;
-  base_id: number;
-  leader_skill: LeaderSkill | undefined;
-  active_skill: ActiveSkill | undefined;
-  name_ja: string;
-  name_en: string;
+  monsterNoJp: number;
+  monsterNoNa: number;
+  baseId: number;
+  leaderSkill: LeaderSkill | undefined;
+  activeSkill: ActiveSkill | undefined;
+  nameJa: string;
+  nameEn: string;
   types: string[];
   rarity: number;
-  buy_mp: number;
-  sell_mp: number;
-  reg_date: string;
+  buyMp: number;
+  sellMp: number;
+  regDate: string;
   attributes: string[];
   inheritable: boolean;
   stackable: boolean;
   farmable: boolean;
-  orb_skin_id: number;
+  orbSkinId: number;
   cost: number;
-  exp_curve: number;
-  fodder_exp: number;
-  max_level: number;
+  expCurve: number;
+  fodderExp: number;
+  maxLevel: number;
   limitbreak: boolean;
-  latent_slots: number;
+  latentSlots: number;
   series: string;
-  hp_max: number;
-  hp_min: number;
-  hp_scale: number;
-  atk_max: number;
-  atk_min: number;
-  atk_scale: number;
-  rcv_max: number;
-  rcv_min: number;
-  rcv_scale: number;
-  has_animation: boolean;
-  has_hqimage: boolean;
+  hpMax: number;
+  hpMin: number;
+  hpScale: number;
+  atkMax: number;
+  atkMin: number;
+  atkScale: number;
+  rcvMax: number;
+  rcvMin: number;
+  rcvScale: number;
+  hasAnimation: boolean;
+  hasHqimage: boolean;
   awakenings: AwokenSkill[];
-  super_awakenings: AwokenSkill[];
+  superAwakenings: AwokenSkill[];
 }
 
 export interface LeaderSkill {
-  name_ja: string;
-  name_en: string;
-  max_hp: number;
-  max_atk: number;
-  max_rcv: number;
-  max_shield: number;
-  max_combos: number;
-  bonus_damage: number;
-  mult_bonus_damage: number;
-  extra_time: number;
-  desc_ja: string;
-  desc_en: string;
+  nameJa: string;
+  nameEn: string;
+  maxHp: number;
+  maxAtk: number;
+  maxRcv: number;
+  maxShield: number;
+  maxCombos: number;
+  bonusDamage: number;
+  multBonusDamage: number;
+  extraTime: number;
+  descJa: string;
+  descEn: string;
 }
 
 export interface ActiveSkill {
-  active_subskills: ActiveSubskill[];
-  compound_skill_type: string;
-  name_ja: string;
-  name_en: string;
-  cooldown_turns_min: number;
-  cooldown_turns_max: number;
+  activeSubskills: ActiveSubskill[];
+  compoundSkillType: string;
+  nameJa: string;
+  nameEn: string;
+  cooldownTurnsMin: number;
+  cooldownTurnsMax: number;
 }
 
 export interface ActiveSubskill {
-  desc_ja: string;
-  desc_en: string;
-  desc_templated_ja: string;
-  desc_templated_en: string;
+  descJa: string;
+  descEn: string;
+  descTemplatedJa: string;
+  descTemplatedEn: string;
   cooldown: number;
 }
 
 export interface AwokenSkill {
-  awoken_skill_id: number;
-  name_ja: string;
-  name_en: string;
-  desc_ja: string;
-  desc_en: string;
-  adj_hp: number;
-  adj_atk: number;
-  adj_rcv: number;
+  awokenSkillId: number;
+  nameJa: string;
+  nameEn: string;
+  descJa: string;
+  descEn: string;
+  adjHp: number;
+  adjAtk: number;
+  adjRcv: number;
 }
 
 function createBaseMonster(): Monster {
   return {
-    monster_no_jp: 0,
-    monster_no_na: 0,
-    base_id: 0,
-    leader_skill: undefined,
-    active_skill: undefined,
-    name_ja: "",
-    name_en: "",
+    monsterNoJp: 0,
+    monsterNoNa: 0,
+    baseId: 0,
+    leaderSkill: undefined,
+    activeSkill: undefined,
+    nameJa: "",
+    nameEn: "",
     types: [],
     rarity: 0,
-    buy_mp: 0,
-    sell_mp: 0,
-    reg_date: "",
+    buyMp: 0,
+    sellMp: 0,
+    regDate: "",
     attributes: [],
     inheritable: false,
     stackable: false,
     farmable: false,
-    orb_skin_id: 0,
+    orbSkinId: 0,
     cost: 0,
-    exp_curve: 0,
-    fodder_exp: 0,
-    max_level: 0,
+    expCurve: 0,
+    fodderExp: 0,
+    maxLevel: 0,
     limitbreak: false,
-    latent_slots: 0,
+    latentSlots: 0,
     series: "",
-    hp_max: 0,
-    hp_min: 0,
-    hp_scale: 0,
-    atk_max: 0,
-    atk_min: 0,
-    atk_scale: 0,
-    rcv_max: 0,
-    rcv_min: 0,
-    rcv_scale: 0,
-    has_animation: false,
-    has_hqimage: false,
+    hpMax: 0,
+    hpMin: 0,
+    hpScale: 0,
+    atkMax: 0,
+    atkMin: 0,
+    atkScale: 0,
+    rcvMax: 0,
+    rcvMin: 0,
+    rcvScale: 0,
+    hasAnimation: false,
+    hasHqimage: false,
     awakenings: [],
-    super_awakenings: [],
+    superAwakenings: [],
   };
 }
 
@@ -134,32 +134,32 @@ export const Monster = {
     message: Monster,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.monster_no_jp !== 0) {
-      writer.uint32(8).int32(message.monster_no_jp);
+    if (message.monsterNoJp !== 0) {
+      writer.uint32(8).int32(message.monsterNoJp);
     }
-    if (message.monster_no_na !== 0) {
-      writer.uint32(16).int32(message.monster_no_na);
+    if (message.monsterNoNa !== 0) {
+      writer.uint32(16).int32(message.monsterNoNa);
     }
-    if (message.base_id !== 0) {
-      writer.uint32(24).int32(message.base_id);
+    if (message.baseId !== 0) {
+      writer.uint32(24).int32(message.baseId);
     }
-    if (message.leader_skill !== undefined) {
+    if (message.leaderSkill !== undefined) {
       LeaderSkill.encode(
-        message.leader_skill,
+        message.leaderSkill,
         writer.uint32(34).fork()
       ).ldelim();
     }
-    if (message.active_skill !== undefined) {
+    if (message.activeSkill !== undefined) {
       ActiveSkill.encode(
-        message.active_skill,
+        message.activeSkill,
         writer.uint32(42).fork()
       ).ldelim();
     }
-    if (message.name_ja !== "") {
-      writer.uint32(50).string(message.name_ja);
+    if (message.nameJa !== "") {
+      writer.uint32(50).string(message.nameJa);
     }
-    if (message.name_en !== "") {
-      writer.uint32(58).string(message.name_en);
+    if (message.nameEn !== "") {
+      writer.uint32(58).string(message.nameEn);
     }
     for (const v of message.types) {
       writer.uint32(66).string(v!);
@@ -167,14 +167,14 @@ export const Monster = {
     if (message.rarity !== 0) {
       writer.uint32(72).int32(message.rarity);
     }
-    if (message.buy_mp !== 0) {
-      writer.uint32(80).int32(message.buy_mp);
+    if (message.buyMp !== 0) {
+      writer.uint32(80).int32(message.buyMp);
     }
-    if (message.sell_mp !== 0) {
-      writer.uint32(88).int32(message.sell_mp);
+    if (message.sellMp !== 0) {
+      writer.uint32(88).int32(message.sellMp);
     }
-    if (message.reg_date !== "") {
-      writer.uint32(98).string(message.reg_date);
+    if (message.regDate !== "") {
+      writer.uint32(98).string(message.regDate);
     }
     for (const v of message.attributes) {
       writer.uint32(106).string(v!);
@@ -188,67 +188,67 @@ export const Monster = {
     if (message.farmable === true) {
       writer.uint32(288).bool(message.farmable);
     }
-    if (message.orb_skin_id !== 0) {
-      writer.uint32(128).int32(message.orb_skin_id);
+    if (message.orbSkinId !== 0) {
+      writer.uint32(128).int32(message.orbSkinId);
     }
     if (message.cost !== 0) {
       writer.uint32(136).int32(message.cost);
     }
-    if (message.exp_curve !== 0) {
-      writer.uint32(144).int32(message.exp_curve);
+    if (message.expCurve !== 0) {
+      writer.uint32(144).int32(message.expCurve);
     }
-    if (message.fodder_exp !== 0) {
-      writer.uint32(152).int32(message.fodder_exp);
+    if (message.fodderExp !== 0) {
+      writer.uint32(152).int32(message.fodderExp);
     }
-    if (message.max_level !== 0) {
-      writer.uint32(160).int32(message.max_level);
+    if (message.maxLevel !== 0) {
+      writer.uint32(160).int32(message.maxLevel);
     }
     if (message.limitbreak === true) {
       writer.uint32(168).bool(message.limitbreak);
     }
-    if (message.latent_slots !== 0) {
-      writer.uint32(176).int32(message.latent_slots);
+    if (message.latentSlots !== 0) {
+      writer.uint32(176).int32(message.latentSlots);
     }
     if (message.series !== "") {
       writer.uint32(298).string(message.series);
     }
-    if (message.hp_max !== 0) {
-      writer.uint32(184).int32(message.hp_max);
+    if (message.hpMax !== 0) {
+      writer.uint32(184).int32(message.hpMax);
     }
-    if (message.hp_min !== 0) {
-      writer.uint32(192).int32(message.hp_min);
+    if (message.hpMin !== 0) {
+      writer.uint32(192).int32(message.hpMin);
     }
-    if (message.hp_scale !== 0) {
-      writer.uint32(205).float(message.hp_scale);
+    if (message.hpScale !== 0) {
+      writer.uint32(205).float(message.hpScale);
     }
-    if (message.atk_max !== 0) {
-      writer.uint32(208).int32(message.atk_max);
+    if (message.atkMax !== 0) {
+      writer.uint32(208).int32(message.atkMax);
     }
-    if (message.atk_min !== 0) {
-      writer.uint32(216).int32(message.atk_min);
+    if (message.atkMin !== 0) {
+      writer.uint32(216).int32(message.atkMin);
     }
-    if (message.atk_scale !== 0) {
-      writer.uint32(229).float(message.atk_scale);
+    if (message.atkScale !== 0) {
+      writer.uint32(229).float(message.atkScale);
     }
-    if (message.rcv_max !== 0) {
-      writer.uint32(232).int32(message.rcv_max);
+    if (message.rcvMax !== 0) {
+      writer.uint32(232).int32(message.rcvMax);
     }
-    if (message.rcv_min !== 0) {
-      writer.uint32(240).int32(message.rcv_min);
+    if (message.rcvMin !== 0) {
+      writer.uint32(240).int32(message.rcvMin);
     }
-    if (message.rcv_scale !== 0) {
-      writer.uint32(253).float(message.rcv_scale);
+    if (message.rcvScale !== 0) {
+      writer.uint32(253).float(message.rcvScale);
     }
-    if (message.has_animation === true) {
-      writer.uint32(256).bool(message.has_animation);
+    if (message.hasAnimation === true) {
+      writer.uint32(256).bool(message.hasAnimation);
     }
-    if (message.has_hqimage === true) {
-      writer.uint32(264).bool(message.has_hqimage);
+    if (message.hasHqimage === true) {
+      writer.uint32(264).bool(message.hasHqimage);
     }
     for (const v of message.awakenings) {
       AwokenSkill.encode(v!, writer.uint32(274).fork()).ldelim();
     }
-    for (const v of message.super_awakenings) {
+    for (const v of message.superAwakenings) {
       AwokenSkill.encode(v!, writer.uint32(282).fork()).ldelim();
     }
     return writer;
@@ -262,25 +262,25 @@ export const Monster = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.monster_no_jp = reader.int32();
+          message.monsterNoJp = reader.int32();
           break;
         case 2:
-          message.monster_no_na = reader.int32();
+          message.monsterNoNa = reader.int32();
           break;
         case 3:
-          message.base_id = reader.int32();
+          message.baseId = reader.int32();
           break;
         case 4:
-          message.leader_skill = LeaderSkill.decode(reader, reader.uint32());
+          message.leaderSkill = LeaderSkill.decode(reader, reader.uint32());
           break;
         case 5:
-          message.active_skill = ActiveSkill.decode(reader, reader.uint32());
+          message.activeSkill = ActiveSkill.decode(reader, reader.uint32());
           break;
         case 6:
-          message.name_ja = reader.string();
+          message.nameJa = reader.string();
           break;
         case 7:
-          message.name_en = reader.string();
+          message.nameEn = reader.string();
           break;
         case 8:
           message.types.push(reader.string());
@@ -289,13 +289,13 @@ export const Monster = {
           message.rarity = reader.int32();
           break;
         case 10:
-          message.buy_mp = reader.int32();
+          message.buyMp = reader.int32();
           break;
         case 11:
-          message.sell_mp = reader.int32();
+          message.sellMp = reader.int32();
           break;
         case 12:
-          message.reg_date = reader.string();
+          message.regDate = reader.string();
           break;
         case 13:
           message.attributes.push(reader.string());
@@ -310,67 +310,67 @@ export const Monster = {
           message.farmable = reader.bool();
           break;
         case 16:
-          message.orb_skin_id = reader.int32();
+          message.orbSkinId = reader.int32();
           break;
         case 17:
           message.cost = reader.int32();
           break;
         case 18:
-          message.exp_curve = reader.int32();
+          message.expCurve = reader.int32();
           break;
         case 19:
-          message.fodder_exp = reader.int32();
+          message.fodderExp = reader.int32();
           break;
         case 20:
-          message.max_level = reader.int32();
+          message.maxLevel = reader.int32();
           break;
         case 21:
           message.limitbreak = reader.bool();
           break;
         case 22:
-          message.latent_slots = reader.int32();
+          message.latentSlots = reader.int32();
           break;
         case 37:
           message.series = reader.string();
           break;
         case 23:
-          message.hp_max = reader.int32();
+          message.hpMax = reader.int32();
           break;
         case 24:
-          message.hp_min = reader.int32();
+          message.hpMin = reader.int32();
           break;
         case 25:
-          message.hp_scale = reader.float();
+          message.hpScale = reader.float();
           break;
         case 26:
-          message.atk_max = reader.int32();
+          message.atkMax = reader.int32();
           break;
         case 27:
-          message.atk_min = reader.int32();
+          message.atkMin = reader.int32();
           break;
         case 28:
-          message.atk_scale = reader.float();
+          message.atkScale = reader.float();
           break;
         case 29:
-          message.rcv_max = reader.int32();
+          message.rcvMax = reader.int32();
           break;
         case 30:
-          message.rcv_min = reader.int32();
+          message.rcvMin = reader.int32();
           break;
         case 31:
-          message.rcv_scale = reader.float();
+          message.rcvScale = reader.float();
           break;
         case 32:
-          message.has_animation = reader.bool();
+          message.hasAnimation = reader.bool();
           break;
         case 33:
-          message.has_hqimage = reader.bool();
+          message.hasHqimage = reader.bool();
           break;
         case 34:
           message.awakenings.push(AwokenSkill.decode(reader, reader.uint32()));
           break;
         case 35:
-          message.super_awakenings.push(
+          message.superAwakenings.push(
             AwokenSkill.decode(reader, reader.uint32())
           );
           break;
@@ -384,28 +384,24 @@ export const Monster = {
 
   fromJSON(object: any): Monster {
     return {
-      monster_no_jp: isSet(object.monster_no_jp)
-        ? Number(object.monster_no_jp)
-        : 0,
-      monster_no_na: isSet(object.monster_no_na)
-        ? Number(object.monster_no_na)
-        : 0,
-      base_id: isSet(object.base_id) ? Number(object.base_id) : 0,
-      leader_skill: isSet(object.leader_skill)
-        ? LeaderSkill.fromJSON(object.leader_skill)
+      monsterNoJp: isSet(object.monsterNoJp) ? Number(object.monsterNoJp) : 0,
+      monsterNoNa: isSet(object.monsterNoNa) ? Number(object.monsterNoNa) : 0,
+      baseId: isSet(object.baseId) ? Number(object.baseId) : 0,
+      leaderSkill: isSet(object.leaderSkill)
+        ? LeaderSkill.fromJSON(object.leaderSkill)
         : undefined,
-      active_skill: isSet(object.active_skill)
-        ? ActiveSkill.fromJSON(object.active_skill)
+      activeSkill: isSet(object.activeSkill)
+        ? ActiveSkill.fromJSON(object.activeSkill)
         : undefined,
-      name_ja: isSet(object.name_ja) ? String(object.name_ja) : "",
-      name_en: isSet(object.name_en) ? String(object.name_en) : "",
+      nameJa: isSet(object.nameJa) ? String(object.nameJa) : "",
+      nameEn: isSet(object.nameEn) ? String(object.nameEn) : "",
       types: Array.isArray(object?.types)
         ? object.types.map((e: any) => String(e))
         : [],
       rarity: isSet(object.rarity) ? Number(object.rarity) : 0,
-      buy_mp: isSet(object.buy_mp) ? Number(object.buy_mp) : 0,
-      sell_mp: isSet(object.sell_mp) ? Number(object.sell_mp) : 0,
-      reg_date: isSet(object.reg_date) ? String(object.reg_date) : "",
+      buyMp: isSet(object.buyMp) ? Number(object.buyMp) : 0,
+      sellMp: isSet(object.sellMp) ? Number(object.sellMp) : 0,
+      regDate: isSet(object.regDate) ? String(object.regDate) : "",
       attributes: Array.isArray(object?.attributes)
         ? object.attributes.map((e: any) => String(e))
         : [],
@@ -414,68 +410,62 @@ export const Monster = {
         : false,
       stackable: isSet(object.stackable) ? Boolean(object.stackable) : false,
       farmable: isSet(object.farmable) ? Boolean(object.farmable) : false,
-      orb_skin_id: isSet(object.orb_skin_id) ? Number(object.orb_skin_id) : 0,
+      orbSkinId: isSet(object.orbSkinId) ? Number(object.orbSkinId) : 0,
       cost: isSet(object.cost) ? Number(object.cost) : 0,
-      exp_curve: isSet(object.exp_curve) ? Number(object.exp_curve) : 0,
-      fodder_exp: isSet(object.fodder_exp) ? Number(object.fodder_exp) : 0,
-      max_level: isSet(object.max_level) ? Number(object.max_level) : 0,
+      expCurve: isSet(object.expCurve) ? Number(object.expCurve) : 0,
+      fodderExp: isSet(object.fodderExp) ? Number(object.fodderExp) : 0,
+      maxLevel: isSet(object.maxLevel) ? Number(object.maxLevel) : 0,
       limitbreak: isSet(object.limitbreak) ? Boolean(object.limitbreak) : false,
-      latent_slots: isSet(object.latent_slots)
-        ? Number(object.latent_slots)
-        : 0,
+      latentSlots: isSet(object.latentSlots) ? Number(object.latentSlots) : 0,
       series: isSet(object.series) ? String(object.series) : "",
-      hp_max: isSet(object.hp_max) ? Number(object.hp_max) : 0,
-      hp_min: isSet(object.hp_min) ? Number(object.hp_min) : 0,
-      hp_scale: isSet(object.hp_scale) ? Number(object.hp_scale) : 0,
-      atk_max: isSet(object.atk_max) ? Number(object.atk_max) : 0,
-      atk_min: isSet(object.atk_min) ? Number(object.atk_min) : 0,
-      atk_scale: isSet(object.atk_scale) ? Number(object.atk_scale) : 0,
-      rcv_max: isSet(object.rcv_max) ? Number(object.rcv_max) : 0,
-      rcv_min: isSet(object.rcv_min) ? Number(object.rcv_min) : 0,
-      rcv_scale: isSet(object.rcv_scale) ? Number(object.rcv_scale) : 0,
-      has_animation: isSet(object.has_animation)
-        ? Boolean(object.has_animation)
+      hpMax: isSet(object.hpMax) ? Number(object.hpMax) : 0,
+      hpMin: isSet(object.hpMin) ? Number(object.hpMin) : 0,
+      hpScale: isSet(object.hpScale) ? Number(object.hpScale) : 0,
+      atkMax: isSet(object.atkMax) ? Number(object.atkMax) : 0,
+      atkMin: isSet(object.atkMin) ? Number(object.atkMin) : 0,
+      atkScale: isSet(object.atkScale) ? Number(object.atkScale) : 0,
+      rcvMax: isSet(object.rcvMax) ? Number(object.rcvMax) : 0,
+      rcvMin: isSet(object.rcvMin) ? Number(object.rcvMin) : 0,
+      rcvScale: isSet(object.rcvScale) ? Number(object.rcvScale) : 0,
+      hasAnimation: isSet(object.hasAnimation)
+        ? Boolean(object.hasAnimation)
         : false,
-      has_hqimage: isSet(object.has_hqimage)
-        ? Boolean(object.has_hqimage)
-        : false,
+      hasHqimage: isSet(object.hasHqimage) ? Boolean(object.hasHqimage) : false,
       awakenings: Array.isArray(object?.awakenings)
         ? object.awakenings.map((e: any) => AwokenSkill.fromJSON(e))
         : [],
-      super_awakenings: Array.isArray(object?.super_awakenings)
-        ? object.super_awakenings.map((e: any) => AwokenSkill.fromJSON(e))
+      superAwakenings: Array.isArray(object?.superAwakenings)
+        ? object.superAwakenings.map((e: any) => AwokenSkill.fromJSON(e))
         : [],
     };
   },
 
   toJSON(message: Monster): unknown {
     const obj: any = {};
-    message.monster_no_jp !== undefined &&
-      (obj.monster_no_jp = Math.round(message.monster_no_jp));
-    message.monster_no_na !== undefined &&
-      (obj.monster_no_na = Math.round(message.monster_no_na));
-    message.base_id !== undefined &&
-      (obj.base_id = Math.round(message.base_id));
-    message.leader_skill !== undefined &&
-      (obj.leader_skill = message.leader_skill
-        ? LeaderSkill.toJSON(message.leader_skill)
+    message.monsterNoJp !== undefined &&
+      (obj.monsterNoJp = Math.round(message.monsterNoJp));
+    message.monsterNoNa !== undefined &&
+      (obj.monsterNoNa = Math.round(message.monsterNoNa));
+    message.baseId !== undefined && (obj.baseId = Math.round(message.baseId));
+    message.leaderSkill !== undefined &&
+      (obj.leaderSkill = message.leaderSkill
+        ? LeaderSkill.toJSON(message.leaderSkill)
         : undefined);
-    message.active_skill !== undefined &&
-      (obj.active_skill = message.active_skill
-        ? ActiveSkill.toJSON(message.active_skill)
+    message.activeSkill !== undefined &&
+      (obj.activeSkill = message.activeSkill
+        ? ActiveSkill.toJSON(message.activeSkill)
         : undefined);
-    message.name_ja !== undefined && (obj.name_ja = message.name_ja);
-    message.name_en !== undefined && (obj.name_en = message.name_en);
+    message.nameJa !== undefined && (obj.nameJa = message.nameJa);
+    message.nameEn !== undefined && (obj.nameEn = message.nameEn);
     if (message.types) {
       obj.types = message.types.map((e) => e);
     } else {
       obj.types = [];
     }
     message.rarity !== undefined && (obj.rarity = Math.round(message.rarity));
-    message.buy_mp !== undefined && (obj.buy_mp = Math.round(message.buy_mp));
-    message.sell_mp !== undefined &&
-      (obj.sell_mp = Math.round(message.sell_mp));
-    message.reg_date !== undefined && (obj.reg_date = message.reg_date);
+    message.buyMp !== undefined && (obj.buyMp = Math.round(message.buyMp));
+    message.sellMp !== undefined && (obj.sellMp = Math.round(message.sellMp));
+    message.regDate !== undefined && (obj.regDate = message.regDate);
     if (message.attributes) {
       obj.attributes = message.attributes.map((e) => e);
     } else {
@@ -485,36 +475,31 @@ export const Monster = {
       (obj.inheritable = message.inheritable);
     message.stackable !== undefined && (obj.stackable = message.stackable);
     message.farmable !== undefined && (obj.farmable = message.farmable);
-    message.orb_skin_id !== undefined &&
-      (obj.orb_skin_id = Math.round(message.orb_skin_id));
+    message.orbSkinId !== undefined &&
+      (obj.orbSkinId = Math.round(message.orbSkinId));
     message.cost !== undefined && (obj.cost = Math.round(message.cost));
-    message.exp_curve !== undefined &&
-      (obj.exp_curve = Math.round(message.exp_curve));
-    message.fodder_exp !== undefined &&
-      (obj.fodder_exp = Math.round(message.fodder_exp));
-    message.max_level !== undefined &&
-      (obj.max_level = Math.round(message.max_level));
+    message.expCurve !== undefined &&
+      (obj.expCurve = Math.round(message.expCurve));
+    message.fodderExp !== undefined &&
+      (obj.fodderExp = Math.round(message.fodderExp));
+    message.maxLevel !== undefined &&
+      (obj.maxLevel = Math.round(message.maxLevel));
     message.limitbreak !== undefined && (obj.limitbreak = message.limitbreak);
-    message.latent_slots !== undefined &&
-      (obj.latent_slots = Math.round(message.latent_slots));
+    message.latentSlots !== undefined &&
+      (obj.latentSlots = Math.round(message.latentSlots));
     message.series !== undefined && (obj.series = message.series);
-    message.hp_max !== undefined && (obj.hp_max = Math.round(message.hp_max));
-    message.hp_min !== undefined && (obj.hp_min = Math.round(message.hp_min));
-    message.hp_scale !== undefined && (obj.hp_scale = message.hp_scale);
-    message.atk_max !== undefined &&
-      (obj.atk_max = Math.round(message.atk_max));
-    message.atk_min !== undefined &&
-      (obj.atk_min = Math.round(message.atk_min));
-    message.atk_scale !== undefined && (obj.atk_scale = message.atk_scale);
-    message.rcv_max !== undefined &&
-      (obj.rcv_max = Math.round(message.rcv_max));
-    message.rcv_min !== undefined &&
-      (obj.rcv_min = Math.round(message.rcv_min));
-    message.rcv_scale !== undefined && (obj.rcv_scale = message.rcv_scale);
-    message.has_animation !== undefined &&
-      (obj.has_animation = message.has_animation);
-    message.has_hqimage !== undefined &&
-      (obj.has_hqimage = message.has_hqimage);
+    message.hpMax !== undefined && (obj.hpMax = Math.round(message.hpMax));
+    message.hpMin !== undefined && (obj.hpMin = Math.round(message.hpMin));
+    message.hpScale !== undefined && (obj.hpScale = message.hpScale);
+    message.atkMax !== undefined && (obj.atkMax = Math.round(message.atkMax));
+    message.atkMin !== undefined && (obj.atkMin = Math.round(message.atkMin));
+    message.atkScale !== undefined && (obj.atkScale = message.atkScale);
+    message.rcvMax !== undefined && (obj.rcvMax = Math.round(message.rcvMax));
+    message.rcvMin !== undefined && (obj.rcvMin = Math.round(message.rcvMin));
+    message.rcvScale !== undefined && (obj.rcvScale = message.rcvScale);
+    message.hasAnimation !== undefined &&
+      (obj.hasAnimation = message.hasAnimation);
+    message.hasHqimage !== undefined && (obj.hasHqimage = message.hasHqimage);
     if (message.awakenings) {
       obj.awakenings = message.awakenings.map((e) =>
         e ? AwokenSkill.toJSON(e) : undefined
@@ -522,81 +507,81 @@ export const Monster = {
     } else {
       obj.awakenings = [];
     }
-    if (message.super_awakenings) {
-      obj.super_awakenings = message.super_awakenings.map((e) =>
+    if (message.superAwakenings) {
+      obj.superAwakenings = message.superAwakenings.map((e) =>
         e ? AwokenSkill.toJSON(e) : undefined
       );
     } else {
-      obj.super_awakenings = [];
+      obj.superAwakenings = [];
     }
     return obj;
   },
 
   fromPartial<I extends Exact<DeepPartial<Monster>, I>>(object: I): Monster {
     const message = createBaseMonster();
-    message.monster_no_jp = object.monster_no_jp ?? 0;
-    message.monster_no_na = object.monster_no_na ?? 0;
-    message.base_id = object.base_id ?? 0;
-    message.leader_skill =
-      object.leader_skill !== undefined && object.leader_skill !== null
-        ? LeaderSkill.fromPartial(object.leader_skill)
+    message.monsterNoJp = object.monsterNoJp ?? 0;
+    message.monsterNoNa = object.monsterNoNa ?? 0;
+    message.baseId = object.baseId ?? 0;
+    message.leaderSkill =
+      object.leaderSkill !== undefined && object.leaderSkill !== null
+        ? LeaderSkill.fromPartial(object.leaderSkill)
         : undefined;
-    message.active_skill =
-      object.active_skill !== undefined && object.active_skill !== null
-        ? ActiveSkill.fromPartial(object.active_skill)
+    message.activeSkill =
+      object.activeSkill !== undefined && object.activeSkill !== null
+        ? ActiveSkill.fromPartial(object.activeSkill)
         : undefined;
-    message.name_ja = object.name_ja ?? "";
-    message.name_en = object.name_en ?? "";
+    message.nameJa = object.nameJa ?? "";
+    message.nameEn = object.nameEn ?? "";
     message.types = object.types?.map((e) => e) || [];
     message.rarity = object.rarity ?? 0;
-    message.buy_mp = object.buy_mp ?? 0;
-    message.sell_mp = object.sell_mp ?? 0;
-    message.reg_date = object.reg_date ?? "";
+    message.buyMp = object.buyMp ?? 0;
+    message.sellMp = object.sellMp ?? 0;
+    message.regDate = object.regDate ?? "";
     message.attributes = object.attributes?.map((e) => e) || [];
     message.inheritable = object.inheritable ?? false;
     message.stackable = object.stackable ?? false;
     message.farmable = object.farmable ?? false;
-    message.orb_skin_id = object.orb_skin_id ?? 0;
+    message.orbSkinId = object.orbSkinId ?? 0;
     message.cost = object.cost ?? 0;
-    message.exp_curve = object.exp_curve ?? 0;
-    message.fodder_exp = object.fodder_exp ?? 0;
-    message.max_level = object.max_level ?? 0;
+    message.expCurve = object.expCurve ?? 0;
+    message.fodderExp = object.fodderExp ?? 0;
+    message.maxLevel = object.maxLevel ?? 0;
     message.limitbreak = object.limitbreak ?? false;
-    message.latent_slots = object.latent_slots ?? 0;
+    message.latentSlots = object.latentSlots ?? 0;
     message.series = object.series ?? "";
-    message.hp_max = object.hp_max ?? 0;
-    message.hp_min = object.hp_min ?? 0;
-    message.hp_scale = object.hp_scale ?? 0;
-    message.atk_max = object.atk_max ?? 0;
-    message.atk_min = object.atk_min ?? 0;
-    message.atk_scale = object.atk_scale ?? 0;
-    message.rcv_max = object.rcv_max ?? 0;
-    message.rcv_min = object.rcv_min ?? 0;
-    message.rcv_scale = object.rcv_scale ?? 0;
-    message.has_animation = object.has_animation ?? false;
-    message.has_hqimage = object.has_hqimage ?? false;
+    message.hpMax = object.hpMax ?? 0;
+    message.hpMin = object.hpMin ?? 0;
+    message.hpScale = object.hpScale ?? 0;
+    message.atkMax = object.atkMax ?? 0;
+    message.atkMin = object.atkMin ?? 0;
+    message.atkScale = object.atkScale ?? 0;
+    message.rcvMax = object.rcvMax ?? 0;
+    message.rcvMin = object.rcvMin ?? 0;
+    message.rcvScale = object.rcvScale ?? 0;
+    message.hasAnimation = object.hasAnimation ?? false;
+    message.hasHqimage = object.hasHqimage ?? false;
     message.awakenings =
       object.awakenings?.map((e) => AwokenSkill.fromPartial(e)) || [];
-    message.super_awakenings =
-      object.super_awakenings?.map((e) => AwokenSkill.fromPartial(e)) || [];
+    message.superAwakenings =
+      object.superAwakenings?.map((e) => AwokenSkill.fromPartial(e)) || [];
     return message;
   },
 };
 
 function createBaseLeaderSkill(): LeaderSkill {
   return {
-    name_ja: "",
-    name_en: "",
-    max_hp: 0,
-    max_atk: 0,
-    max_rcv: 0,
-    max_shield: 0,
-    max_combos: 0,
-    bonus_damage: 0,
-    mult_bonus_damage: 0,
-    extra_time: 0,
-    desc_ja: "",
-    desc_en: "",
+    nameJa: "",
+    nameEn: "",
+    maxHp: 0,
+    maxAtk: 0,
+    maxRcv: 0,
+    maxShield: 0,
+    maxCombos: 0,
+    bonusDamage: 0,
+    multBonusDamage: 0,
+    extraTime: 0,
+    descJa: "",
+    descEn: "",
   };
 }
 
@@ -605,41 +590,41 @@ export const LeaderSkill = {
     message: LeaderSkill,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.name_ja !== "") {
-      writer.uint32(10).string(message.name_ja);
+    if (message.nameJa !== "") {
+      writer.uint32(10).string(message.nameJa);
     }
-    if (message.name_en !== "") {
-      writer.uint32(18).string(message.name_en);
+    if (message.nameEn !== "") {
+      writer.uint32(18).string(message.nameEn);
     }
-    if (message.max_hp !== 0) {
-      writer.uint32(29).float(message.max_hp);
+    if (message.maxHp !== 0) {
+      writer.uint32(29).float(message.maxHp);
     }
-    if (message.max_atk !== 0) {
-      writer.uint32(37).float(message.max_atk);
+    if (message.maxAtk !== 0) {
+      writer.uint32(37).float(message.maxAtk);
     }
-    if (message.max_rcv !== 0) {
-      writer.uint32(45).float(message.max_rcv);
+    if (message.maxRcv !== 0) {
+      writer.uint32(45).float(message.maxRcv);
     }
-    if (message.max_shield !== 0) {
-      writer.uint32(53).float(message.max_shield);
+    if (message.maxShield !== 0) {
+      writer.uint32(53).float(message.maxShield);
     }
-    if (message.max_combos !== 0) {
-      writer.uint32(56).int32(message.max_combos);
+    if (message.maxCombos !== 0) {
+      writer.uint32(56).int32(message.maxCombos);
     }
-    if (message.bonus_damage !== 0) {
-      writer.uint32(64).int32(message.bonus_damage);
+    if (message.bonusDamage !== 0) {
+      writer.uint32(64).int32(message.bonusDamage);
     }
-    if (message.mult_bonus_damage !== 0) {
-      writer.uint32(72).int32(message.mult_bonus_damage);
+    if (message.multBonusDamage !== 0) {
+      writer.uint32(72).int32(message.multBonusDamage);
     }
-    if (message.extra_time !== 0) {
-      writer.uint32(85).float(message.extra_time);
+    if (message.extraTime !== 0) {
+      writer.uint32(85).float(message.extraTime);
     }
-    if (message.desc_ja !== "") {
-      writer.uint32(90).string(message.desc_ja);
+    if (message.descJa !== "") {
+      writer.uint32(90).string(message.descJa);
     }
-    if (message.desc_en !== "") {
-      writer.uint32(98).string(message.desc_en);
+    if (message.descEn !== "") {
+      writer.uint32(98).string(message.descEn);
     }
     return writer;
   },
@@ -652,40 +637,40 @@ export const LeaderSkill = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.name_ja = reader.string();
+          message.nameJa = reader.string();
           break;
         case 2:
-          message.name_en = reader.string();
+          message.nameEn = reader.string();
           break;
         case 3:
-          message.max_hp = reader.float();
+          message.maxHp = reader.float();
           break;
         case 4:
-          message.max_atk = reader.float();
+          message.maxAtk = reader.float();
           break;
         case 5:
-          message.max_rcv = reader.float();
+          message.maxRcv = reader.float();
           break;
         case 6:
-          message.max_shield = reader.float();
+          message.maxShield = reader.float();
           break;
         case 7:
-          message.max_combos = reader.int32();
+          message.maxCombos = reader.int32();
           break;
         case 8:
-          message.bonus_damage = reader.int32();
+          message.bonusDamage = reader.int32();
           break;
         case 9:
-          message.mult_bonus_damage = reader.int32();
+          message.multBonusDamage = reader.int32();
           break;
         case 10:
-          message.extra_time = reader.float();
+          message.extraTime = reader.float();
           break;
         case 11:
-          message.desc_ja = reader.string();
+          message.descJa = reader.string();
           break;
         case 12:
-          message.desc_en = reader.string();
+          message.descEn = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -697,42 +682,40 @@ export const LeaderSkill = {
 
   fromJSON(object: any): LeaderSkill {
     return {
-      name_ja: isSet(object.name_ja) ? String(object.name_ja) : "",
-      name_en: isSet(object.name_en) ? String(object.name_en) : "",
-      max_hp: isSet(object.max_hp) ? Number(object.max_hp) : 0,
-      max_atk: isSet(object.max_atk) ? Number(object.max_atk) : 0,
-      max_rcv: isSet(object.max_rcv) ? Number(object.max_rcv) : 0,
-      max_shield: isSet(object.max_shield) ? Number(object.max_shield) : 0,
-      max_combos: isSet(object.max_combos) ? Number(object.max_combos) : 0,
-      bonus_damage: isSet(object.bonus_damage)
-        ? Number(object.bonus_damage)
+      nameJa: isSet(object.nameJa) ? String(object.nameJa) : "",
+      nameEn: isSet(object.nameEn) ? String(object.nameEn) : "",
+      maxHp: isSet(object.maxHp) ? Number(object.maxHp) : 0,
+      maxAtk: isSet(object.maxAtk) ? Number(object.maxAtk) : 0,
+      maxRcv: isSet(object.maxRcv) ? Number(object.maxRcv) : 0,
+      maxShield: isSet(object.maxShield) ? Number(object.maxShield) : 0,
+      maxCombos: isSet(object.maxCombos) ? Number(object.maxCombos) : 0,
+      bonusDamage: isSet(object.bonusDamage) ? Number(object.bonusDamage) : 0,
+      multBonusDamage: isSet(object.multBonusDamage)
+        ? Number(object.multBonusDamage)
         : 0,
-      mult_bonus_damage: isSet(object.mult_bonus_damage)
-        ? Number(object.mult_bonus_damage)
-        : 0,
-      extra_time: isSet(object.extra_time) ? Number(object.extra_time) : 0,
-      desc_ja: isSet(object.desc_ja) ? String(object.desc_ja) : "",
-      desc_en: isSet(object.desc_en) ? String(object.desc_en) : "",
+      extraTime: isSet(object.extraTime) ? Number(object.extraTime) : 0,
+      descJa: isSet(object.descJa) ? String(object.descJa) : "",
+      descEn: isSet(object.descEn) ? String(object.descEn) : "",
     };
   },
 
   toJSON(message: LeaderSkill): unknown {
     const obj: any = {};
-    message.name_ja !== undefined && (obj.name_ja = message.name_ja);
-    message.name_en !== undefined && (obj.name_en = message.name_en);
-    message.max_hp !== undefined && (obj.max_hp = message.max_hp);
-    message.max_atk !== undefined && (obj.max_atk = message.max_atk);
-    message.max_rcv !== undefined && (obj.max_rcv = message.max_rcv);
-    message.max_shield !== undefined && (obj.max_shield = message.max_shield);
-    message.max_combos !== undefined &&
-      (obj.max_combos = Math.round(message.max_combos));
-    message.bonus_damage !== undefined &&
-      (obj.bonus_damage = Math.round(message.bonus_damage));
-    message.mult_bonus_damage !== undefined &&
-      (obj.mult_bonus_damage = Math.round(message.mult_bonus_damage));
-    message.extra_time !== undefined && (obj.extra_time = message.extra_time);
-    message.desc_ja !== undefined && (obj.desc_ja = message.desc_ja);
-    message.desc_en !== undefined && (obj.desc_en = message.desc_en);
+    message.nameJa !== undefined && (obj.nameJa = message.nameJa);
+    message.nameEn !== undefined && (obj.nameEn = message.nameEn);
+    message.maxHp !== undefined && (obj.maxHp = message.maxHp);
+    message.maxAtk !== undefined && (obj.maxAtk = message.maxAtk);
+    message.maxRcv !== undefined && (obj.maxRcv = message.maxRcv);
+    message.maxShield !== undefined && (obj.maxShield = message.maxShield);
+    message.maxCombos !== undefined &&
+      (obj.maxCombos = Math.round(message.maxCombos));
+    message.bonusDamage !== undefined &&
+      (obj.bonusDamage = Math.round(message.bonusDamage));
+    message.multBonusDamage !== undefined &&
+      (obj.multBonusDamage = Math.round(message.multBonusDamage));
+    message.extraTime !== undefined && (obj.extraTime = message.extraTime);
+    message.descJa !== undefined && (obj.descJa = message.descJa);
+    message.descEn !== undefined && (obj.descEn = message.descEn);
     return obj;
   },
 
@@ -740,30 +723,30 @@ export const LeaderSkill = {
     object: I
   ): LeaderSkill {
     const message = createBaseLeaderSkill();
-    message.name_ja = object.name_ja ?? "";
-    message.name_en = object.name_en ?? "";
-    message.max_hp = object.max_hp ?? 0;
-    message.max_atk = object.max_atk ?? 0;
-    message.max_rcv = object.max_rcv ?? 0;
-    message.max_shield = object.max_shield ?? 0;
-    message.max_combos = object.max_combos ?? 0;
-    message.bonus_damage = object.bonus_damage ?? 0;
-    message.mult_bonus_damage = object.mult_bonus_damage ?? 0;
-    message.extra_time = object.extra_time ?? 0;
-    message.desc_ja = object.desc_ja ?? "";
-    message.desc_en = object.desc_en ?? "";
+    message.nameJa = object.nameJa ?? "";
+    message.nameEn = object.nameEn ?? "";
+    message.maxHp = object.maxHp ?? 0;
+    message.maxAtk = object.maxAtk ?? 0;
+    message.maxRcv = object.maxRcv ?? 0;
+    message.maxShield = object.maxShield ?? 0;
+    message.maxCombos = object.maxCombos ?? 0;
+    message.bonusDamage = object.bonusDamage ?? 0;
+    message.multBonusDamage = object.multBonusDamage ?? 0;
+    message.extraTime = object.extraTime ?? 0;
+    message.descJa = object.descJa ?? "";
+    message.descEn = object.descEn ?? "";
     return message;
   },
 };
 
 function createBaseActiveSkill(): ActiveSkill {
   return {
-    active_subskills: [],
-    compound_skill_type: "",
-    name_ja: "",
-    name_en: "",
-    cooldown_turns_min: 0,
-    cooldown_turns_max: 0,
+    activeSubskills: [],
+    compoundSkillType: "",
+    nameJa: "",
+    nameEn: "",
+    cooldownTurnsMin: 0,
+    cooldownTurnsMax: 0,
   };
 }
 
@@ -772,23 +755,23 @@ export const ActiveSkill = {
     message: ActiveSkill,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    for (const v of message.active_subskills) {
+    for (const v of message.activeSubskills) {
       ActiveSubskill.encode(v!, writer.uint32(10).fork()).ldelim();
     }
-    if (message.compound_skill_type !== "") {
-      writer.uint32(18).string(message.compound_skill_type);
+    if (message.compoundSkillType !== "") {
+      writer.uint32(18).string(message.compoundSkillType);
     }
-    if (message.name_ja !== "") {
-      writer.uint32(26).string(message.name_ja);
+    if (message.nameJa !== "") {
+      writer.uint32(26).string(message.nameJa);
     }
-    if (message.name_en !== "") {
-      writer.uint32(34).string(message.name_en);
+    if (message.nameEn !== "") {
+      writer.uint32(34).string(message.nameEn);
     }
-    if (message.cooldown_turns_min !== 0) {
-      writer.uint32(40).int32(message.cooldown_turns_min);
+    if (message.cooldownTurnsMin !== 0) {
+      writer.uint32(40).int32(message.cooldownTurnsMin);
     }
-    if (message.cooldown_turns_max !== 0) {
-      writer.uint32(48).int32(message.cooldown_turns_max);
+    if (message.cooldownTurnsMax !== 0) {
+      writer.uint32(48).int32(message.cooldownTurnsMax);
     }
     return writer;
   },
@@ -801,24 +784,24 @@ export const ActiveSkill = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.active_subskills.push(
+          message.activeSubskills.push(
             ActiveSubskill.decode(reader, reader.uint32())
           );
           break;
         case 2:
-          message.compound_skill_type = reader.string();
+          message.compoundSkillType = reader.string();
           break;
         case 3:
-          message.name_ja = reader.string();
+          message.nameJa = reader.string();
           break;
         case 4:
-          message.name_en = reader.string();
+          message.nameEn = reader.string();
           break;
         case 5:
-          message.cooldown_turns_min = reader.int32();
+          message.cooldownTurnsMin = reader.int32();
           break;
         case 6:
-          message.cooldown_turns_max = reader.int32();
+          message.cooldownTurnsMax = reader.int32();
           break;
         default:
           reader.skipType(tag & 7);
@@ -830,40 +813,40 @@ export const ActiveSkill = {
 
   fromJSON(object: any): ActiveSkill {
     return {
-      active_subskills: Array.isArray(object?.active_subskills)
-        ? object.active_subskills.map((e: any) => ActiveSubskill.fromJSON(e))
+      activeSubskills: Array.isArray(object?.activeSubskills)
+        ? object.activeSubskills.map((e: any) => ActiveSubskill.fromJSON(e))
         : [],
-      compound_skill_type: isSet(object.compound_skill_type)
-        ? String(object.compound_skill_type)
+      compoundSkillType: isSet(object.compoundSkillType)
+        ? String(object.compoundSkillType)
         : "",
-      name_ja: isSet(object.name_ja) ? String(object.name_ja) : "",
-      name_en: isSet(object.name_en) ? String(object.name_en) : "",
-      cooldown_turns_min: isSet(object.cooldown_turns_min)
-        ? Number(object.cooldown_turns_min)
+      nameJa: isSet(object.nameJa) ? String(object.nameJa) : "",
+      nameEn: isSet(object.nameEn) ? String(object.nameEn) : "",
+      cooldownTurnsMin: isSet(object.cooldownTurnsMin)
+        ? Number(object.cooldownTurnsMin)
         : 0,
-      cooldown_turns_max: isSet(object.cooldown_turns_max)
-        ? Number(object.cooldown_turns_max)
+      cooldownTurnsMax: isSet(object.cooldownTurnsMax)
+        ? Number(object.cooldownTurnsMax)
         : 0,
     };
   },
 
   toJSON(message: ActiveSkill): unknown {
     const obj: any = {};
-    if (message.active_subskills) {
-      obj.active_subskills = message.active_subskills.map((e) =>
+    if (message.activeSubskills) {
+      obj.activeSubskills = message.activeSubskills.map((e) =>
         e ? ActiveSubskill.toJSON(e) : undefined
       );
     } else {
-      obj.active_subskills = [];
+      obj.activeSubskills = [];
     }
-    message.compound_skill_type !== undefined &&
-      (obj.compound_skill_type = message.compound_skill_type);
-    message.name_ja !== undefined && (obj.name_ja = message.name_ja);
-    message.name_en !== undefined && (obj.name_en = message.name_en);
-    message.cooldown_turns_min !== undefined &&
-      (obj.cooldown_turns_min = Math.round(message.cooldown_turns_min));
-    message.cooldown_turns_max !== undefined &&
-      (obj.cooldown_turns_max = Math.round(message.cooldown_turns_max));
+    message.compoundSkillType !== undefined &&
+      (obj.compoundSkillType = message.compoundSkillType);
+    message.nameJa !== undefined && (obj.nameJa = message.nameJa);
+    message.nameEn !== undefined && (obj.nameEn = message.nameEn);
+    message.cooldownTurnsMin !== undefined &&
+      (obj.cooldownTurnsMin = Math.round(message.cooldownTurnsMin));
+    message.cooldownTurnsMax !== undefined &&
+      (obj.cooldownTurnsMax = Math.round(message.cooldownTurnsMax));
     return obj;
   },
 
@@ -871,23 +854,23 @@ export const ActiveSkill = {
     object: I
   ): ActiveSkill {
     const message = createBaseActiveSkill();
-    message.active_subskills =
-      object.active_subskills?.map((e) => ActiveSubskill.fromPartial(e)) || [];
-    message.compound_skill_type = object.compound_skill_type ?? "";
-    message.name_ja = object.name_ja ?? "";
-    message.name_en = object.name_en ?? "";
-    message.cooldown_turns_min = object.cooldown_turns_min ?? 0;
-    message.cooldown_turns_max = object.cooldown_turns_max ?? 0;
+    message.activeSubskills =
+      object.activeSubskills?.map((e) => ActiveSubskill.fromPartial(e)) || [];
+    message.compoundSkillType = object.compoundSkillType ?? "";
+    message.nameJa = object.nameJa ?? "";
+    message.nameEn = object.nameEn ?? "";
+    message.cooldownTurnsMin = object.cooldownTurnsMin ?? 0;
+    message.cooldownTurnsMax = object.cooldownTurnsMax ?? 0;
     return message;
   },
 };
 
 function createBaseActiveSubskill(): ActiveSubskill {
   return {
-    desc_ja: "",
-    desc_en: "",
-    desc_templated_ja: "",
-    desc_templated_en: "",
+    descJa: "",
+    descEn: "",
+    descTemplatedJa: "",
+    descTemplatedEn: "",
     cooldown: 0,
   };
 }
@@ -897,17 +880,17 @@ export const ActiveSubskill = {
     message: ActiveSubskill,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.desc_ja !== "") {
-      writer.uint32(10).string(message.desc_ja);
+    if (message.descJa !== "") {
+      writer.uint32(10).string(message.descJa);
     }
-    if (message.desc_en !== "") {
-      writer.uint32(18).string(message.desc_en);
+    if (message.descEn !== "") {
+      writer.uint32(18).string(message.descEn);
     }
-    if (message.desc_templated_ja !== "") {
-      writer.uint32(26).string(message.desc_templated_ja);
+    if (message.descTemplatedJa !== "") {
+      writer.uint32(26).string(message.descTemplatedJa);
     }
-    if (message.desc_templated_en !== "") {
-      writer.uint32(34).string(message.desc_templated_en);
+    if (message.descTemplatedEn !== "") {
+      writer.uint32(34).string(message.descTemplatedEn);
     }
     if (message.cooldown !== 0) {
       writer.uint32(40).int32(message.cooldown);
@@ -923,16 +906,16 @@ export const ActiveSubskill = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.desc_ja = reader.string();
+          message.descJa = reader.string();
           break;
         case 2:
-          message.desc_en = reader.string();
+          message.descEn = reader.string();
           break;
         case 3:
-          message.desc_templated_ja = reader.string();
+          message.descTemplatedJa = reader.string();
           break;
         case 4:
-          message.desc_templated_en = reader.string();
+          message.descTemplatedEn = reader.string();
           break;
         case 5:
           message.cooldown = reader.int32();
@@ -947,13 +930,13 @@ export const ActiveSubskill = {
 
   fromJSON(object: any): ActiveSubskill {
     return {
-      desc_ja: isSet(object.desc_ja) ? String(object.desc_ja) : "",
-      desc_en: isSet(object.desc_en) ? String(object.desc_en) : "",
-      desc_templated_ja: isSet(object.desc_templated_ja)
-        ? String(object.desc_templated_ja)
+      descJa: isSet(object.descJa) ? String(object.descJa) : "",
+      descEn: isSet(object.descEn) ? String(object.descEn) : "",
+      descTemplatedJa: isSet(object.descTemplatedJa)
+        ? String(object.descTemplatedJa)
         : "",
-      desc_templated_en: isSet(object.desc_templated_en)
-        ? String(object.desc_templated_en)
+      descTemplatedEn: isSet(object.descTemplatedEn)
+        ? String(object.descTemplatedEn)
         : "",
       cooldown: isSet(object.cooldown) ? Number(object.cooldown) : 0,
     };
@@ -961,12 +944,12 @@ export const ActiveSubskill = {
 
   toJSON(message: ActiveSubskill): unknown {
     const obj: any = {};
-    message.desc_ja !== undefined && (obj.desc_ja = message.desc_ja);
-    message.desc_en !== undefined && (obj.desc_en = message.desc_en);
-    message.desc_templated_ja !== undefined &&
-      (obj.desc_templated_ja = message.desc_templated_ja);
-    message.desc_templated_en !== undefined &&
-      (obj.desc_templated_en = message.desc_templated_en);
+    message.descJa !== undefined && (obj.descJa = message.descJa);
+    message.descEn !== undefined && (obj.descEn = message.descEn);
+    message.descTemplatedJa !== undefined &&
+      (obj.descTemplatedJa = message.descTemplatedJa);
+    message.descTemplatedEn !== undefined &&
+      (obj.descTemplatedEn = message.descTemplatedEn);
     message.cooldown !== undefined &&
       (obj.cooldown = Math.round(message.cooldown));
     return obj;
@@ -976,10 +959,10 @@ export const ActiveSubskill = {
     object: I
   ): ActiveSubskill {
     const message = createBaseActiveSubskill();
-    message.desc_ja = object.desc_ja ?? "";
-    message.desc_en = object.desc_en ?? "";
-    message.desc_templated_ja = object.desc_templated_ja ?? "";
-    message.desc_templated_en = object.desc_templated_en ?? "";
+    message.descJa = object.descJa ?? "";
+    message.descEn = object.descEn ?? "";
+    message.descTemplatedJa = object.descTemplatedJa ?? "";
+    message.descTemplatedEn = object.descTemplatedEn ?? "";
     message.cooldown = object.cooldown ?? 0;
     return message;
   },
@@ -987,14 +970,14 @@ export const ActiveSubskill = {
 
 function createBaseAwokenSkill(): AwokenSkill {
   return {
-    awoken_skill_id: 0,
-    name_ja: "",
-    name_en: "",
-    desc_ja: "",
-    desc_en: "",
-    adj_hp: 0,
-    adj_atk: 0,
-    adj_rcv: 0,
+    awokenSkillId: 0,
+    nameJa: "",
+    nameEn: "",
+    descJa: "",
+    descEn: "",
+    adjHp: 0,
+    adjAtk: 0,
+    adjRcv: 0,
   };
 }
 
@@ -1003,29 +986,29 @@ export const AwokenSkill = {
     message: AwokenSkill,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.awoken_skill_id !== 0) {
-      writer.uint32(8).int32(message.awoken_skill_id);
+    if (message.awokenSkillId !== 0) {
+      writer.uint32(8).int32(message.awokenSkillId);
     }
-    if (message.name_ja !== "") {
-      writer.uint32(18).string(message.name_ja);
+    if (message.nameJa !== "") {
+      writer.uint32(18).string(message.nameJa);
     }
-    if (message.name_en !== "") {
-      writer.uint32(26).string(message.name_en);
+    if (message.nameEn !== "") {
+      writer.uint32(26).string(message.nameEn);
     }
-    if (message.desc_ja !== "") {
-      writer.uint32(34).string(message.desc_ja);
+    if (message.descJa !== "") {
+      writer.uint32(34).string(message.descJa);
     }
-    if (message.desc_en !== "") {
-      writer.uint32(42).string(message.desc_en);
+    if (message.descEn !== "") {
+      writer.uint32(42).string(message.descEn);
     }
-    if (message.adj_hp !== 0) {
-      writer.uint32(48).int32(message.adj_hp);
+    if (message.adjHp !== 0) {
+      writer.uint32(48).int32(message.adjHp);
     }
-    if (message.adj_atk !== 0) {
-      writer.uint32(56).int32(message.adj_atk);
+    if (message.adjAtk !== 0) {
+      writer.uint32(56).int32(message.adjAtk);
     }
-    if (message.adj_rcv !== 0) {
-      writer.uint32(64).int32(message.adj_rcv);
+    if (message.adjRcv !== 0) {
+      writer.uint32(64).int32(message.adjRcv);
     }
     return writer;
   },
@@ -1038,28 +1021,28 @@ export const AwokenSkill = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.awoken_skill_id = reader.int32();
+          message.awokenSkillId = reader.int32();
           break;
         case 2:
-          message.name_ja = reader.string();
+          message.nameJa = reader.string();
           break;
         case 3:
-          message.name_en = reader.string();
+          message.nameEn = reader.string();
           break;
         case 4:
-          message.desc_ja = reader.string();
+          message.descJa = reader.string();
           break;
         case 5:
-          message.desc_en = reader.string();
+          message.descEn = reader.string();
           break;
         case 6:
-          message.adj_hp = reader.int32();
+          message.adjHp = reader.int32();
           break;
         case 7:
-          message.adj_atk = reader.int32();
+          message.adjAtk = reader.int32();
           break;
         case 8:
-          message.adj_rcv = reader.int32();
+          message.adjRcv = reader.int32();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1071,32 +1054,30 @@ export const AwokenSkill = {
 
   fromJSON(object: any): AwokenSkill {
     return {
-      awoken_skill_id: isSet(object.awoken_skill_id)
-        ? Number(object.awoken_skill_id)
+      awokenSkillId: isSet(object.awokenSkillId)
+        ? Number(object.awokenSkillId)
         : 0,
-      name_ja: isSet(object.name_ja) ? String(object.name_ja) : "",
-      name_en: isSet(object.name_en) ? String(object.name_en) : "",
-      desc_ja: isSet(object.desc_ja) ? String(object.desc_ja) : "",
-      desc_en: isSet(object.desc_en) ? String(object.desc_en) : "",
-      adj_hp: isSet(object.adj_hp) ? Number(object.adj_hp) : 0,
-      adj_atk: isSet(object.adj_atk) ? Number(object.adj_atk) : 0,
-      adj_rcv: isSet(object.adj_rcv) ? Number(object.adj_rcv) : 0,
+      nameJa: isSet(object.nameJa) ? String(object.nameJa) : "",
+      nameEn: isSet(object.nameEn) ? String(object.nameEn) : "",
+      descJa: isSet(object.descJa) ? String(object.descJa) : "",
+      descEn: isSet(object.descEn) ? String(object.descEn) : "",
+      adjHp: isSet(object.adjHp) ? Number(object.adjHp) : 0,
+      adjAtk: isSet(object.adjAtk) ? Number(object.adjAtk) : 0,
+      adjRcv: isSet(object.adjRcv) ? Number(object.adjRcv) : 0,
     };
   },
 
   toJSON(message: AwokenSkill): unknown {
     const obj: any = {};
-    message.awoken_skill_id !== undefined &&
-      (obj.awoken_skill_id = Math.round(message.awoken_skill_id));
-    message.name_ja !== undefined && (obj.name_ja = message.name_ja);
-    message.name_en !== undefined && (obj.name_en = message.name_en);
-    message.desc_ja !== undefined && (obj.desc_ja = message.desc_ja);
-    message.desc_en !== undefined && (obj.desc_en = message.desc_en);
-    message.adj_hp !== undefined && (obj.adj_hp = Math.round(message.adj_hp));
-    message.adj_atk !== undefined &&
-      (obj.adj_atk = Math.round(message.adj_atk));
-    message.adj_rcv !== undefined &&
-      (obj.adj_rcv = Math.round(message.adj_rcv));
+    message.awokenSkillId !== undefined &&
+      (obj.awokenSkillId = Math.round(message.awokenSkillId));
+    message.nameJa !== undefined && (obj.nameJa = message.nameJa);
+    message.nameEn !== undefined && (obj.nameEn = message.nameEn);
+    message.descJa !== undefined && (obj.descJa = message.descJa);
+    message.descEn !== undefined && (obj.descEn = message.descEn);
+    message.adjHp !== undefined && (obj.adjHp = Math.round(message.adjHp));
+    message.adjAtk !== undefined && (obj.adjAtk = Math.round(message.adjAtk));
+    message.adjRcv !== undefined && (obj.adjRcv = Math.round(message.adjRcv));
     return obj;
   },
 
@@ -1104,14 +1085,14 @@ export const AwokenSkill = {
     object: I
   ): AwokenSkill {
     const message = createBaseAwokenSkill();
-    message.awoken_skill_id = object.awoken_skill_id ?? 0;
-    message.name_ja = object.name_ja ?? "";
-    message.name_en = object.name_en ?? "";
-    message.desc_ja = object.desc_ja ?? "";
-    message.desc_en = object.desc_en ?? "";
-    message.adj_hp = object.adj_hp ?? 0;
-    message.adj_atk = object.adj_atk ?? 0;
-    message.adj_rcv = object.adj_rcv ?? 0;
+    message.awokenSkillId = object.awokenSkillId ?? 0;
+    message.nameJa = object.nameJa ?? "";
+    message.nameEn = object.nameEn ?? "";
+    message.descJa = object.descJa ?? "";
+    message.descEn = object.descEn ?? "";
+    message.adjHp = object.adjHp ?? 0;
+    message.adjAtk = object.adjAtk ?? 0;
+    message.adjRcv = object.adjRcv ?? 0;
     return message;
   },
 };

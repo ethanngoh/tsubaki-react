@@ -2,8 +2,6 @@ import axios, { AxiosError } from "axios";
 import { inject, observer } from "mobx-react";
 import { ComponentClass } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { AccountService } from "./accounts/AccountService";
-import { AccountStore } from "./accounts/AccountStore";
 import { AuthLocalStorage } from "./auth/Auth";
 import { BASE_URL } from "./environment";
 import { MonsterService } from "./monsters/MonsterService";
@@ -20,25 +18,21 @@ import {
 interface IAllStores extends IServiceStores {}
 
 interface IServiceStores {
-  accountStore: AccountStore;
   monsterStore: MonsterStore;
 }
 
 export class Stores {
   private authLocal: AuthLocalStorage;
-  private accountStore: AccountStore;
   private monsterStore: MonsterStore;
 
   public constructor() {
     this.authLocal = new AuthLocalStorage();
     const axiosClient = this.createAxiosClient(this.authLocal);
-    this.accountStore = new AccountStore(new AccountService(axiosClient));
     this.monsterStore = new MonsterStore(new MonsterService(axiosClient));
   }
 
   public get stores(): IAllStores {
     return {
-      accountStore: this.accountStore,
       monsterStore: this.monsterStore,
     };
   }
