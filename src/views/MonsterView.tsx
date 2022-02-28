@@ -13,10 +13,15 @@ interface MonsterViewProps {
   router: {
     params: { id: string };
   };
+  userEnJa: string;
 }
 
-class MonsterHeader extends React.Component<any, any> {
-  constructor(props: MonsterViewProps) {
+interface MonsterHeaderProps {
+  monster: Monster;
+}
+
+class MonsterHeader extends React.Component<MonsterHeaderProps, {}> {
+  constructor(props: MonsterHeaderProps) {
     super(props);
   }
   render() {
@@ -69,12 +74,35 @@ class MonsterSkills extends React.Component<any, any> {
   }
 }
 
-export default class MonsterView extends Component<MonsterViewProps, State> {
-  state: State = {
-    formData: {},
+interface MonsterViewState {
+  enJa: string;
+}
+
+interface MyToggleProps {
+  enJa: string;
+  onToggle: (newEnJa: string) => void;
+}
+
+class MyToggle extends React.Component<MyToggleProps, {}> {
+  constructor(props: MyToggleProps) {
+    super(props);
+  }
+
+  private toggleEnJa = () => {
+    this.props.onToggle("ja or en logic here");
   };
+
+  render() {
+    return <Button onClick={this.toggleEnJa}>{this.props.enJa}</Button>;
+  }
+}
+
+export default class MonsterView extends Component<MonsterViewProps, MonsterViewState> {
   constructor(props: MonsterViewProps) {
     super(props);
+    this.state = {
+      enJa: props.userEnJa,
+    };
   }
 
   async componentDidMount() {
@@ -82,6 +110,12 @@ export default class MonsterView extends Component<MonsterViewProps, State> {
       id: parseInt(this.props.router.params.id),
     });
   }
+
+  private onToggleEnJa = (newEnJa: string) => {
+    this.setState({
+      enJa: newEnJa,
+    });
+  };
 
   render() {
     const data = this.props.monsterStore.getResponse!;
@@ -93,11 +127,13 @@ export default class MonsterView extends Component<MonsterViewProps, State> {
     if (!monster) {
       return <div>Loading...</div>;
     }
+
     return (
       <>
         <div className="main-container">
+          <MyToggle enJa={this.state.enJa} onToggle={this.onToggleEnJa} />
           <MonsterHeader monster={monster} />
-          <MonsterStats monster={monster} />
+          <MonsterStats monster={monster} enJa={this.state.enJa} />
           <MonsterSkills monster={monster} />
         </div>
       </>
