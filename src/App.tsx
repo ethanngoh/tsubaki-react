@@ -2,7 +2,7 @@ import { Toast } from "./components/Toast";
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
-import { InjectedMonsterView } from "views/MonsterView";
+import { InjectedMonsterView } from "views/Monster/MonsterView";
 
 const AppContainer = styled.div`
   display: flex;
@@ -22,13 +22,6 @@ export default function App() {
         <Router>
           <Toast />
           <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/monster">View Monster</Link>
-                </li>
-              </ul>
-            </nav>
             <Routes>
               <Route path="/monster/:id" element={<InjectedMonsterView />}></Route>
             </Routes>

@@ -10,8 +10,7 @@ export interface Monster {
   baseId: number;
   leaderSkill: LeaderSkill | undefined;
   activeSkill: ActiveSkill | undefined;
-  nameJa: string;
-  nameEn: string;
+  name: TranslatedString | undefined;
   types: string[];
   rarity: number;
   buyMp: number;
@@ -45,8 +44,7 @@ export interface Monster {
 }
 
 export interface LeaderSkill {
-  nameJa: string;
-  nameEn: string;
+  name: TranslatedString | undefined;
   maxHp: number;
   maxAtk: number;
   maxRcv: number;
@@ -55,36 +53,35 @@ export interface LeaderSkill {
   bonusDamage: number;
   multBonusDamage: number;
   extraTime: number;
-  descJa: string;
-  descEn: string;
+  desc: TranslatedString | undefined;
 }
 
 export interface ActiveSkill {
   activeSubskills: ActiveSubskill[];
   compoundSkillType: string;
-  nameJa: string;
-  nameEn: string;
+  name: TranslatedString | undefined;
   cooldownTurnsMin: number;
   cooldownTurnsMax: number;
 }
 
 export interface ActiveSubskill {
-  descJa: string;
-  descEn: string;
-  descTemplatedJa: string;
-  descTemplatedEn: string;
+  desc: TranslatedString | undefined;
+  descTemplated: TranslatedString | undefined;
   cooldown: number;
 }
 
 export interface AwokenSkill {
   awokenSkillId: number;
-  nameJa: string;
-  nameEn: string;
-  descJa: string;
-  descEn: string;
+  name: TranslatedString | undefined;
+  desc: TranslatedString | undefined;
   adjHp: number;
   adjAtk: number;
   adjRcv: number;
+}
+
+export interface TranslatedString {
+  ja: string;
+  en: string;
 }
 
 function createBaseMonster(): Monster {
@@ -94,8 +91,7 @@ function createBaseMonster(): Monster {
     baseId: 0,
     leaderSkill: undefined,
     activeSkill: undefined,
-    nameJa: "",
-    nameEn: "",
+    name: undefined,
     types: [],
     rarity: 0,
     buyMp: 0,
@@ -155,11 +151,8 @@ export const Monster = {
         writer.uint32(42).fork()
       ).ldelim();
     }
-    if (message.nameJa !== "") {
-      writer.uint32(50).string(message.nameJa);
-    }
-    if (message.nameEn !== "") {
-      writer.uint32(58).string(message.nameEn);
+    if (message.name !== undefined) {
+      TranslatedString.encode(message.name, writer.uint32(50).fork()).ldelim();
     }
     for (const v of message.types) {
       writer.uint32(66).string(v!);
@@ -277,10 +270,7 @@ export const Monster = {
           message.activeSkill = ActiveSkill.decode(reader, reader.uint32());
           break;
         case 6:
-          message.nameJa = reader.string();
-          break;
-        case 7:
-          message.nameEn = reader.string();
+          message.name = TranslatedString.decode(reader, reader.uint32());
           break;
         case 8:
           message.types.push(reader.string());
@@ -393,8 +383,9 @@ export const Monster = {
       activeSkill: isSet(object.activeSkill)
         ? ActiveSkill.fromJSON(object.activeSkill)
         : undefined,
-      nameJa: isSet(object.nameJa) ? String(object.nameJa) : "",
-      nameEn: isSet(object.nameEn) ? String(object.nameEn) : "",
+      name: isSet(object.name)
+        ? TranslatedString.fromJSON(object.name)
+        : undefined,
       types: Array.isArray(object?.types)
         ? object.types.map((e: any) => String(e))
         : [],
@@ -455,8 +446,10 @@ export const Monster = {
       (obj.activeSkill = message.activeSkill
         ? ActiveSkill.toJSON(message.activeSkill)
         : undefined);
-    message.nameJa !== undefined && (obj.nameJa = message.nameJa);
-    message.nameEn !== undefined && (obj.nameEn = message.nameEn);
+    message.name !== undefined &&
+      (obj.name = message.name
+        ? TranslatedString.toJSON(message.name)
+        : undefined);
     if (message.types) {
       obj.types = message.types.map((e) => e);
     } else {
@@ -530,8 +523,10 @@ export const Monster = {
       object.activeSkill !== undefined && object.activeSkill !== null
         ? ActiveSkill.fromPartial(object.activeSkill)
         : undefined;
-    message.nameJa = object.nameJa ?? "";
-    message.nameEn = object.nameEn ?? "";
+    message.name =
+      object.name !== undefined && object.name !== null
+        ? TranslatedString.fromPartial(object.name)
+        : undefined;
     message.types = object.types?.map((e) => e) || [];
     message.rarity = object.rarity ?? 0;
     message.buyMp = object.buyMp ?? 0;
@@ -570,8 +565,7 @@ export const Monster = {
 
 function createBaseLeaderSkill(): LeaderSkill {
   return {
-    nameJa: "",
-    nameEn: "",
+    name: undefined,
     maxHp: 0,
     maxAtk: 0,
     maxRcv: 0,
@@ -580,8 +574,7 @@ function createBaseLeaderSkill(): LeaderSkill {
     bonusDamage: 0,
     multBonusDamage: 0,
     extraTime: 0,
-    descJa: "",
-    descEn: "",
+    desc: undefined,
   };
 }
 
@@ -590,11 +583,8 @@ export const LeaderSkill = {
     message: LeaderSkill,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.nameJa !== "") {
-      writer.uint32(10).string(message.nameJa);
-    }
-    if (message.nameEn !== "") {
-      writer.uint32(18).string(message.nameEn);
+    if (message.name !== undefined) {
+      TranslatedString.encode(message.name, writer.uint32(10).fork()).ldelim();
     }
     if (message.maxHp !== 0) {
       writer.uint32(29).float(message.maxHp);
@@ -620,11 +610,8 @@ export const LeaderSkill = {
     if (message.extraTime !== 0) {
       writer.uint32(85).float(message.extraTime);
     }
-    if (message.descJa !== "") {
-      writer.uint32(90).string(message.descJa);
-    }
-    if (message.descEn !== "") {
-      writer.uint32(98).string(message.descEn);
+    if (message.desc !== undefined) {
+      TranslatedString.encode(message.desc, writer.uint32(90).fork()).ldelim();
     }
     return writer;
   },
@@ -637,10 +624,7 @@ export const LeaderSkill = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nameJa = reader.string();
-          break;
-        case 2:
-          message.nameEn = reader.string();
+          message.name = TranslatedString.decode(reader, reader.uint32());
           break;
         case 3:
           message.maxHp = reader.float();
@@ -667,10 +651,7 @@ export const LeaderSkill = {
           message.extraTime = reader.float();
           break;
         case 11:
-          message.descJa = reader.string();
-          break;
-        case 12:
-          message.descEn = reader.string();
+          message.desc = TranslatedString.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -682,8 +663,9 @@ export const LeaderSkill = {
 
   fromJSON(object: any): LeaderSkill {
     return {
-      nameJa: isSet(object.nameJa) ? String(object.nameJa) : "",
-      nameEn: isSet(object.nameEn) ? String(object.nameEn) : "",
+      name: isSet(object.name)
+        ? TranslatedString.fromJSON(object.name)
+        : undefined,
       maxHp: isSet(object.maxHp) ? Number(object.maxHp) : 0,
       maxAtk: isSet(object.maxAtk) ? Number(object.maxAtk) : 0,
       maxRcv: isSet(object.maxRcv) ? Number(object.maxRcv) : 0,
@@ -694,15 +676,18 @@ export const LeaderSkill = {
         ? Number(object.multBonusDamage)
         : 0,
       extraTime: isSet(object.extraTime) ? Number(object.extraTime) : 0,
-      descJa: isSet(object.descJa) ? String(object.descJa) : "",
-      descEn: isSet(object.descEn) ? String(object.descEn) : "",
+      desc: isSet(object.desc)
+        ? TranslatedString.fromJSON(object.desc)
+        : undefined,
     };
   },
 
   toJSON(message: LeaderSkill): unknown {
     const obj: any = {};
-    message.nameJa !== undefined && (obj.nameJa = message.nameJa);
-    message.nameEn !== undefined && (obj.nameEn = message.nameEn);
+    message.name !== undefined &&
+      (obj.name = message.name
+        ? TranslatedString.toJSON(message.name)
+        : undefined);
     message.maxHp !== undefined && (obj.maxHp = message.maxHp);
     message.maxAtk !== undefined && (obj.maxAtk = message.maxAtk);
     message.maxRcv !== undefined && (obj.maxRcv = message.maxRcv);
@@ -714,8 +699,10 @@ export const LeaderSkill = {
     message.multBonusDamage !== undefined &&
       (obj.multBonusDamage = Math.round(message.multBonusDamage));
     message.extraTime !== undefined && (obj.extraTime = message.extraTime);
-    message.descJa !== undefined && (obj.descJa = message.descJa);
-    message.descEn !== undefined && (obj.descEn = message.descEn);
+    message.desc !== undefined &&
+      (obj.desc = message.desc
+        ? TranslatedString.toJSON(message.desc)
+        : undefined);
     return obj;
   },
 
@@ -723,8 +710,10 @@ export const LeaderSkill = {
     object: I
   ): LeaderSkill {
     const message = createBaseLeaderSkill();
-    message.nameJa = object.nameJa ?? "";
-    message.nameEn = object.nameEn ?? "";
+    message.name =
+      object.name !== undefined && object.name !== null
+        ? TranslatedString.fromPartial(object.name)
+        : undefined;
     message.maxHp = object.maxHp ?? 0;
     message.maxAtk = object.maxAtk ?? 0;
     message.maxRcv = object.maxRcv ?? 0;
@@ -733,8 +722,10 @@ export const LeaderSkill = {
     message.bonusDamage = object.bonusDamage ?? 0;
     message.multBonusDamage = object.multBonusDamage ?? 0;
     message.extraTime = object.extraTime ?? 0;
-    message.descJa = object.descJa ?? "";
-    message.descEn = object.descEn ?? "";
+    message.desc =
+      object.desc !== undefined && object.desc !== null
+        ? TranslatedString.fromPartial(object.desc)
+        : undefined;
     return message;
   },
 };
@@ -743,8 +734,7 @@ function createBaseActiveSkill(): ActiveSkill {
   return {
     activeSubskills: [],
     compoundSkillType: "",
-    nameJa: "",
-    nameEn: "",
+    name: undefined,
     cooldownTurnsMin: 0,
     cooldownTurnsMax: 0,
   };
@@ -761,11 +751,8 @@ export const ActiveSkill = {
     if (message.compoundSkillType !== "") {
       writer.uint32(18).string(message.compoundSkillType);
     }
-    if (message.nameJa !== "") {
-      writer.uint32(26).string(message.nameJa);
-    }
-    if (message.nameEn !== "") {
-      writer.uint32(34).string(message.nameEn);
+    if (message.name !== undefined) {
+      TranslatedString.encode(message.name, writer.uint32(26).fork()).ldelim();
     }
     if (message.cooldownTurnsMin !== 0) {
       writer.uint32(40).int32(message.cooldownTurnsMin);
@@ -792,10 +779,7 @@ export const ActiveSkill = {
           message.compoundSkillType = reader.string();
           break;
         case 3:
-          message.nameJa = reader.string();
-          break;
-        case 4:
-          message.nameEn = reader.string();
+          message.name = TranslatedString.decode(reader, reader.uint32());
           break;
         case 5:
           message.cooldownTurnsMin = reader.int32();
@@ -819,8 +803,9 @@ export const ActiveSkill = {
       compoundSkillType: isSet(object.compoundSkillType)
         ? String(object.compoundSkillType)
         : "",
-      nameJa: isSet(object.nameJa) ? String(object.nameJa) : "",
-      nameEn: isSet(object.nameEn) ? String(object.nameEn) : "",
+      name: isSet(object.name)
+        ? TranslatedString.fromJSON(object.name)
+        : undefined,
       cooldownTurnsMin: isSet(object.cooldownTurnsMin)
         ? Number(object.cooldownTurnsMin)
         : 0,
@@ -841,8 +826,10 @@ export const ActiveSkill = {
     }
     message.compoundSkillType !== undefined &&
       (obj.compoundSkillType = message.compoundSkillType);
-    message.nameJa !== undefined && (obj.nameJa = message.nameJa);
-    message.nameEn !== undefined && (obj.nameEn = message.nameEn);
+    message.name !== undefined &&
+      (obj.name = message.name
+        ? TranslatedString.toJSON(message.name)
+        : undefined);
     message.cooldownTurnsMin !== undefined &&
       (obj.cooldownTurnsMin = Math.round(message.cooldownTurnsMin));
     message.cooldownTurnsMax !== undefined &&
@@ -857,8 +844,10 @@ export const ActiveSkill = {
     message.activeSubskills =
       object.activeSubskills?.map((e) => ActiveSubskill.fromPartial(e)) || [];
     message.compoundSkillType = object.compoundSkillType ?? "";
-    message.nameJa = object.nameJa ?? "";
-    message.nameEn = object.nameEn ?? "";
+    message.name =
+      object.name !== undefined && object.name !== null
+        ? TranslatedString.fromPartial(object.name)
+        : undefined;
     message.cooldownTurnsMin = object.cooldownTurnsMin ?? 0;
     message.cooldownTurnsMax = object.cooldownTurnsMax ?? 0;
     return message;
@@ -866,13 +855,7 @@ export const ActiveSkill = {
 };
 
 function createBaseActiveSubskill(): ActiveSubskill {
-  return {
-    descJa: "",
-    descEn: "",
-    descTemplatedJa: "",
-    descTemplatedEn: "",
-    cooldown: 0,
-  };
+  return { desc: undefined, descTemplated: undefined, cooldown: 0 };
 }
 
 export const ActiveSubskill = {
@@ -880,17 +863,14 @@ export const ActiveSubskill = {
     message: ActiveSubskill,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.descJa !== "") {
-      writer.uint32(10).string(message.descJa);
+    if (message.desc !== undefined) {
+      TranslatedString.encode(message.desc, writer.uint32(10).fork()).ldelim();
     }
-    if (message.descEn !== "") {
-      writer.uint32(18).string(message.descEn);
-    }
-    if (message.descTemplatedJa !== "") {
-      writer.uint32(26).string(message.descTemplatedJa);
-    }
-    if (message.descTemplatedEn !== "") {
-      writer.uint32(34).string(message.descTemplatedEn);
+    if (message.descTemplated !== undefined) {
+      TranslatedString.encode(
+        message.descTemplated,
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     if (message.cooldown !== 0) {
       writer.uint32(40).int32(message.cooldown);
@@ -906,16 +886,13 @@ export const ActiveSubskill = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.descJa = reader.string();
-          break;
-        case 2:
-          message.descEn = reader.string();
+          message.desc = TranslatedString.decode(reader, reader.uint32());
           break;
         case 3:
-          message.descTemplatedJa = reader.string();
-          break;
-        case 4:
-          message.descTemplatedEn = reader.string();
+          message.descTemplated = TranslatedString.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 5:
           message.cooldown = reader.int32();
@@ -930,26 +907,26 @@ export const ActiveSubskill = {
 
   fromJSON(object: any): ActiveSubskill {
     return {
-      descJa: isSet(object.descJa) ? String(object.descJa) : "",
-      descEn: isSet(object.descEn) ? String(object.descEn) : "",
-      descTemplatedJa: isSet(object.descTemplatedJa)
-        ? String(object.descTemplatedJa)
-        : "",
-      descTemplatedEn: isSet(object.descTemplatedEn)
-        ? String(object.descTemplatedEn)
-        : "",
+      desc: isSet(object.desc)
+        ? TranslatedString.fromJSON(object.desc)
+        : undefined,
+      descTemplated: isSet(object.descTemplated)
+        ? TranslatedString.fromJSON(object.descTemplated)
+        : undefined,
       cooldown: isSet(object.cooldown) ? Number(object.cooldown) : 0,
     };
   },
 
   toJSON(message: ActiveSubskill): unknown {
     const obj: any = {};
-    message.descJa !== undefined && (obj.descJa = message.descJa);
-    message.descEn !== undefined && (obj.descEn = message.descEn);
-    message.descTemplatedJa !== undefined &&
-      (obj.descTemplatedJa = message.descTemplatedJa);
-    message.descTemplatedEn !== undefined &&
-      (obj.descTemplatedEn = message.descTemplatedEn);
+    message.desc !== undefined &&
+      (obj.desc = message.desc
+        ? TranslatedString.toJSON(message.desc)
+        : undefined);
+    message.descTemplated !== undefined &&
+      (obj.descTemplated = message.descTemplated
+        ? TranslatedString.toJSON(message.descTemplated)
+        : undefined);
     message.cooldown !== undefined &&
       (obj.cooldown = Math.round(message.cooldown));
     return obj;
@@ -959,10 +936,14 @@ export const ActiveSubskill = {
     object: I
   ): ActiveSubskill {
     const message = createBaseActiveSubskill();
-    message.descJa = object.descJa ?? "";
-    message.descEn = object.descEn ?? "";
-    message.descTemplatedJa = object.descTemplatedJa ?? "";
-    message.descTemplatedEn = object.descTemplatedEn ?? "";
+    message.desc =
+      object.desc !== undefined && object.desc !== null
+        ? TranslatedString.fromPartial(object.desc)
+        : undefined;
+    message.descTemplated =
+      object.descTemplated !== undefined && object.descTemplated !== null
+        ? TranslatedString.fromPartial(object.descTemplated)
+        : undefined;
     message.cooldown = object.cooldown ?? 0;
     return message;
   },
@@ -971,10 +952,8 @@ export const ActiveSubskill = {
 function createBaseAwokenSkill(): AwokenSkill {
   return {
     awokenSkillId: 0,
-    nameJa: "",
-    nameEn: "",
-    descJa: "",
-    descEn: "",
+    name: undefined,
+    desc: undefined,
     adjHp: 0,
     adjAtk: 0,
     adjRcv: 0,
@@ -989,17 +968,11 @@ export const AwokenSkill = {
     if (message.awokenSkillId !== 0) {
       writer.uint32(8).int32(message.awokenSkillId);
     }
-    if (message.nameJa !== "") {
-      writer.uint32(18).string(message.nameJa);
+    if (message.name !== undefined) {
+      TranslatedString.encode(message.name, writer.uint32(18).fork()).ldelim();
     }
-    if (message.nameEn !== "") {
-      writer.uint32(26).string(message.nameEn);
-    }
-    if (message.descJa !== "") {
-      writer.uint32(34).string(message.descJa);
-    }
-    if (message.descEn !== "") {
-      writer.uint32(42).string(message.descEn);
+    if (message.desc !== undefined) {
+      TranslatedString.encode(message.desc, writer.uint32(34).fork()).ldelim();
     }
     if (message.adjHp !== 0) {
       writer.uint32(48).int32(message.adjHp);
@@ -1024,16 +997,10 @@ export const AwokenSkill = {
           message.awokenSkillId = reader.int32();
           break;
         case 2:
-          message.nameJa = reader.string();
-          break;
-        case 3:
-          message.nameEn = reader.string();
+          message.name = TranslatedString.decode(reader, reader.uint32());
           break;
         case 4:
-          message.descJa = reader.string();
-          break;
-        case 5:
-          message.descEn = reader.string();
+          message.desc = TranslatedString.decode(reader, reader.uint32());
           break;
         case 6:
           message.adjHp = reader.int32();
@@ -1057,10 +1024,12 @@ export const AwokenSkill = {
       awokenSkillId: isSet(object.awokenSkillId)
         ? Number(object.awokenSkillId)
         : 0,
-      nameJa: isSet(object.nameJa) ? String(object.nameJa) : "",
-      nameEn: isSet(object.nameEn) ? String(object.nameEn) : "",
-      descJa: isSet(object.descJa) ? String(object.descJa) : "",
-      descEn: isSet(object.descEn) ? String(object.descEn) : "",
+      name: isSet(object.name)
+        ? TranslatedString.fromJSON(object.name)
+        : undefined,
+      desc: isSet(object.desc)
+        ? TranslatedString.fromJSON(object.desc)
+        : undefined,
       adjHp: isSet(object.adjHp) ? Number(object.adjHp) : 0,
       adjAtk: isSet(object.adjAtk) ? Number(object.adjAtk) : 0,
       adjRcv: isSet(object.adjRcv) ? Number(object.adjRcv) : 0,
@@ -1071,10 +1040,14 @@ export const AwokenSkill = {
     const obj: any = {};
     message.awokenSkillId !== undefined &&
       (obj.awokenSkillId = Math.round(message.awokenSkillId));
-    message.nameJa !== undefined && (obj.nameJa = message.nameJa);
-    message.nameEn !== undefined && (obj.nameEn = message.nameEn);
-    message.descJa !== undefined && (obj.descJa = message.descJa);
-    message.descEn !== undefined && (obj.descEn = message.descEn);
+    message.name !== undefined &&
+      (obj.name = message.name
+        ? TranslatedString.toJSON(message.name)
+        : undefined);
+    message.desc !== undefined &&
+      (obj.desc = message.desc
+        ? TranslatedString.toJSON(message.desc)
+        : undefined);
     message.adjHp !== undefined && (obj.adjHp = Math.round(message.adjHp));
     message.adjAtk !== undefined && (obj.adjAtk = Math.round(message.adjAtk));
     message.adjRcv !== undefined && (obj.adjRcv = Math.round(message.adjRcv));
@@ -1086,13 +1059,80 @@ export const AwokenSkill = {
   ): AwokenSkill {
     const message = createBaseAwokenSkill();
     message.awokenSkillId = object.awokenSkillId ?? 0;
-    message.nameJa = object.nameJa ?? "";
-    message.nameEn = object.nameEn ?? "";
-    message.descJa = object.descJa ?? "";
-    message.descEn = object.descEn ?? "";
+    message.name =
+      object.name !== undefined && object.name !== null
+        ? TranslatedString.fromPartial(object.name)
+        : undefined;
+    message.desc =
+      object.desc !== undefined && object.desc !== null
+        ? TranslatedString.fromPartial(object.desc)
+        : undefined;
     message.adjHp = object.adjHp ?? 0;
     message.adjAtk = object.adjAtk ?? 0;
     message.adjRcv = object.adjRcv ?? 0;
+    return message;
+  },
+};
+
+function createBaseTranslatedString(): TranslatedString {
+  return { ja: "", en: "" };
+}
+
+export const TranslatedString = {
+  encode(
+    message: TranslatedString,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.ja !== "") {
+      writer.uint32(10).string(message.ja);
+    }
+    if (message.en !== "") {
+      writer.uint32(18).string(message.en);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): TranslatedString {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTranslatedString();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.ja = reader.string();
+          break;
+        case 2:
+          message.en = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TranslatedString {
+    return {
+      ja: isSet(object.ja) ? String(object.ja) : "",
+      en: isSet(object.en) ? String(object.en) : "",
+    };
+  },
+
+  toJSON(message: TranslatedString): unknown {
+    const obj: any = {};
+    message.ja !== undefined && (obj.ja = message.ja);
+    message.en !== undefined && (obj.en = message.en);
+    return obj;
+  },
+
+  fromPartial<I extends Exact<DeepPartial<TranslatedString>, I>>(
+    object: I
+  ): TranslatedString {
+    const message = createBaseTranslatedString();
+    message.ja = object.ja ?? "";
+    message.en = object.en ?? "";
     return message;
   },
 };
