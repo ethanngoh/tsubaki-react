@@ -60,7 +60,7 @@ export default class MonsterView extends Component<MonsterViewProps, MonsterView
           <LanguageChanger lang={this.state.lang} onToggle={this.onToggleLang} />
           <MonsterHeader monster={monster} lang={this.state.lang} />
           <MonsterStats monster={monster} lang={this.state.lang} />
-          <MonsterSkills monster={monster} />
+          <MonsterSkills monster={monster} lang={this.state.lang} />
         </div>
       </>
     );
