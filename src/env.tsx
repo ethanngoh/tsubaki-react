@@ -1,8 +1,6 @@
 import { OpenAPI } from "./client";
 
-const environment = process.env.REACT_APP_ENVIRONMENT
-  ? process.env.REACT_APP_ENVIRONMENT
-  : "development";
+export const environment = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
 
 if (environment === "development") {
   OpenAPI.BASE = "http://localhost:8001";
