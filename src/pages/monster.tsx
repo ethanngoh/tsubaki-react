@@ -81,7 +81,8 @@ export const MonsterPage = () => {
           <SkillGroup>
             <SkillHeader>Active Skill</SkillHeader>
             <SkillName>
-              {data.active_skill.name_en} ({data.active_skill.cooldown_turns_max} -&gt;{" "}
+              {data.active_skill.name_en} (
+              {data.active_skill.cooldown_turns_max} -&gt;{" "}
               {data.active_skill.cooldown_turns_min} turns)
             </SkillName>
             <span>{data.active_skill.desc_en}</span>

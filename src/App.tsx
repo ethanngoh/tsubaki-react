@@ -10,7 +10,13 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
   speedAsDuration: true,
 });
 
-const BoundingBox = ({ maxWidth, children }: { maxWidth: string; children: React.ReactNode }) => {
+const BoundingBox = ({
+  maxWidth,
+  children,
+}: {
+  maxWidth: string;
+  children: React.ReactNode;
+}) => {
   return <div style={{ width: "100%", maxWidth }}>{children}</div>;
 };
 

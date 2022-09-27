@@ -20,7 +20,11 @@ export const Splash = () => {
             Learn More
           </a>{" "}
         </div>
-        <SplashImg src="img/banner-1.png" className="d-none d-md-block" alt="banner" />
+        <SplashImg
+          src="img/banner-1.png"
+          className="d-none d-md-block"
+          alt="banner"
+        />
       </SplashContainer>
     </header>
   );

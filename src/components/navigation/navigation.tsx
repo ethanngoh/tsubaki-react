@@ -21,7 +21,13 @@ const NavRight = styled.nav`
   display: flex;
 `;
 
-const Nav = ({ left, right }: { left: React.ReactNode; right: React.ReactNode }) => {
+const Nav = ({
+  left,
+  right,
+}: {
+  left: React.ReactNode;
+  right: React.ReactNode;
+}) => {
   return (
     <NavTop>
       <NavContainer>
@@ -46,7 +52,13 @@ const NavLink = styled.a`
 export const Navigation = () => {
   return (
     <Nav
-      left={<SearchInput placeholder="Search Bar" setName={() => {}} names={["test", "test2"]} />}
+      left={
+        <SearchInput
+          placeholder="Search Bar"
+          setName={() => {}}
+          names={["test", "test2"]}
+        />
+      }
       right={
         <>
           <NavLink>Some Link</NavLink>

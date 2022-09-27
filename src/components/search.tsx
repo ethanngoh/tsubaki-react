@@ -74,7 +74,10 @@ export const SearchInput = ({
         classNamePrefix="select"
         placeholder={placeholder}
         styles={customStyle}
-        onChange={(newValue: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => {
+        onChange={(
+          newValue: SingleValue<SelectOption>,
+          actionMeta: ActionMeta<SelectOption>
+        ) => {
           setName(newValue?.value);
         }}
       />
