@@ -1,57 +1,38 @@
-body {
-  margin: 0;
-
-  font-family: "Mada", sans-serif !important;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  background-color: #282a36;
-  color: white !important;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-h1 {
-  font-size: 2rem;
-}
-
-.main-container {
-  background-color: black;
-  width: 900px;
-  height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.monster-header {
-  width: 100%;
-  display: flex;
-  flex-direction: horizontal;
-  align-items: center;
-}
-
-.monster-name {
-  font-size: 40px;
-  padding: 5px;
-  flex-grow: 1;
+.App {
   text-align: center;
 }
 
-/* .monster-stats {
-  border: 1px white solid;
-  margin: 5px;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.monster-stats td {
-  text-align: right;
-  padding: 3px;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-.monster-stats th {
-  text-align: left;
-  font-weight: bold;
-  padding: 3px;
-} */
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

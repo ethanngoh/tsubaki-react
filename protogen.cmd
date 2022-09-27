@@ -1,1 +1,0 @@
-protoc --ts_proto_opt=esModuleInterop=true --proto_path=..\tsubaki-api\proto --plugin=protoc-gen-ts_proto=.\node_modules\.bin\protoc-gen-ts_proto.cmd --ts_proto_out=.\src\protogen ..\tsubaki-api\proto\*
